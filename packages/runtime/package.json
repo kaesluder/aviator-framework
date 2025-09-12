@@ -1,0 +1,31 @@
+{
+  "name": "aviator-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/aviator-framework.js",
+  "files": [
+    "dist/aviator-framework.js"
+  ],
+  "scripts": {
+    "prepack": "npm run build",
+    "build": "rollup -c",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "test": "vitest",
+    "test:run": "vitest run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@eslint/js": "^9.35.0",
+    "eslint": "^9.35.0",
+    "globals": "^14.0.0",
+    "jsdom": "^26.1.0",
+    "rollup": "^4.50.1",
+    "rollup-plugin-cleanup": "^3.2.1",
+    "rollup-plugin-filesize": "^10.0.0",
+    "vitest": "^3.2.4"
+  }
+}
