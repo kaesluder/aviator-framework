@@ -14,5 +14,8 @@
   "type": "commonjs",
   "workspaces": [
     "packages/runtime"
-  ]
+  ],
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
 }
