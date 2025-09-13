@@ -37,6 +37,7 @@
             # Required to enable the language server
             pkgs.nodePackages.typescript
             pkgs.nodePackages.typescript-language-server
+            pkgs.vscode-langservers-extracted
             pkgs.nodePackages.prettier
 
             # Python is required on NixOS if the dependencies require node-gyp
