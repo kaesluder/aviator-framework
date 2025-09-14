@@ -24,9 +24,81 @@ addTodoButton.addEventListener('click', () => {
 
 // Functions
 function renderTodoInReadMode(todo) {
- // TODO: implement me!
+  const li = document.createElement('li')
+  const span = document.createElement('span')
+  span.textContent = todo
+
+  span.addEventListener('dblclick', () => {
+    const idx = todos.indexOf(todo)
+
+    todosList.replaceChild(
+      renderTodoInEditMode(todo),
+      todosList.childNodes[idx]
+    )
+  })
+  li.append(span)
+
+  const button = document.createElement('button')
+  button.textContent = 'Done'
+  button.addEventListener('click', () => {
+    const idx = todos.indexOf(todo)
+    removeTodo(idx)
+  })
+  li.append(button)
+
+  li.append(span)
+  return li
+
 }
 
 function addTodo() {
- // TODO: implement me!
+  const newTodo = addTodoInput.value
+
+  if (newTodo && newTodo.length > 3) {
+    todos.push(addTodoInput.value)
+    addTodoInput.value = null
+    todosList.append(renderTodoInReadMode(newTodo))
+  }
+  console.log(todos)
+}
+
+function renderTodoInEditMode(todo) {
+  const li = document.createElement('li')
+
+  const input = document.createElement('input')
+  input.type = 'text'
+  input.value = todo
+  li.append(input)
+
+  const saveBtn = document.createElement('button')
+  saveBtn.textContent = 'Save'
+  saveBtn.addEventListener('click', () => {
+    const idx = todos.indexOf(todo)
+    updateTodo(idx, input.value)
+  })
+  li.append(saveBtn)
+
+  const cancelBtn = document.createElement('button')
+  cancelBtn.textContent = 'Cancel'
+  cancelBtn.addEventListener('click', () => {
+    const idx = todos.indexOf(todo)
+    todosList.replaceChild(
+      renderTodoInReadMode(todo),
+      todosList.childNodes[idx]
+    )
+  })
+  li.append(cancelBtn)
+
+  return li
+}
+
+function removeTodo(index) {
+  todos.splice(index, 1)
+  todosList.childNodes[index].remove()
+}
+
+function updateTodo(index, description) {
+  todos[index] = description
+  const todo = renderTodoInReadMode(description)
+  todosList.replaceChild(todo, todosList.childNodes[index])
 }
