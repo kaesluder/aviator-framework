@@ -118,3 +118,6 @@ temp/
 # Build outputs
 build/
 dist/
+
+ebook/
+result
